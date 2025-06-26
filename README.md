@@ -79,3 +79,18 @@ void BuildTree(int index, int left, int right) {
     BuildTree(2 * index + 2, mid + 1, right);  // Build right child
     segment[index] = segment[2 * index + 1] + segment[2 * index + 2]; // Combine results
 }
+
+
+
+## WHAT WILL BE THE SIZE OF SEGMENT ARRAY ❓❓
+ 
+ - LEAF NODE : N
+ - INTERNAL NODE : N-1
+ -TOTAL SIZE=N+(N-1)
+
+ ---
+
+## TIME COMPLEXITY ❓
+- visiting all nodes twice 
+- building segment tree: O(N)
+
