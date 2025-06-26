@@ -36,9 +36,15 @@ certain points to know about the segment tree:
 --> number of node required to build segment tree => n+n/2+n/4+....+1. ~ 2N-1.
 
 
-# WHY NOT USING PREFIX SUM ARRAY??..
+# WHY NOT USING PREFIX SUM ARRAY??..(RANGE SUM)
 
 
 
+
+
+# CODE :
+
+BuildTree()
+![alt text](<Screenshot 2025-06-26 194829.png>)
 
 
