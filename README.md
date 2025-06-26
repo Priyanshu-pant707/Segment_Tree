@@ -2,49 +2,80 @@
 All about the segment tree
 
 
+# 🌲 Segment Tree
 
-Its is an efficient data structure that allows </br>
- -> Efficient Querying of intervals/range.
- -> Efficient updating of intervals/range
+Segment Tree is a powerful and efficient data structure used for:
 
-----------------------------------------*-----------------------------------
+- 📌 Efficient querying of intervals/ranges (e.g., sum, minimum, maximum).
+- 🔁 Efficient updating of intervals/ranges in logarithmic time.
 
-# Range queries to find :
- 1-> sum
- 2-> minimum
- 3->maximum etc.....
+---
 
- segment tree will come to roll up.
+## 📊 Use Cases: Range Queries
 
------------------------------------------*----------------------------------
+Segment Trees are ideal for answering the following types of range queries efficiently:
 
+1. Sum of elements in a range.
+2. Minimum or maximum value in a range.
+3. GCD, LCM, XOR, and custom associative operations over a range.
 
-# HOW TO BUILD SEGMENT TREE??...
+Segment Tree is your go-to solution when **both** querying and updating operations are involved frequently.
 
-certain points to know about the segment tree:
--->IT WILL BE A BINARY TREE. EXCLUDING LEAFNODE
---> let array be  {3,1,2,7,1}
--->each node will cover a certain range eg.(a,b).
--->mid=l+r/2;
--->left range will be (l,m) and the right range will be (m+1,r).
--->find mid till you get (m,m) => l==r.
--->root will represent the entire array and the leaf node will represent the single elements.
--->no leaf will represent the segment and interval.
--->height of tree-> logn;
--->height diff between left subtree and right subtree will not be more than one.
+---
 
---> number of node required to build segment tree => n+n/2+n/4+....+1. ~ 2N-1.
+## 🛠 How to Build a Segment Tree?
 
+Before building, understand these key points:
 
-# WHY NOT USING PREFIX SUM ARRAY??..(RANGE SUM)
+- ✅ The Segment Tree is a **binary tree**, where:
+  - Internal nodes represent ranges.
+  - Leaf nodes represent single elements of the array.
 
+Let the array be:  
+`arr = {3, 1, 2, 7, 1}`
 
+### Structure:
 
+- Each node covers a certain range `(l, r)`.
+- The range is divided at the midpoint:  
+  `mid = (l + r) / 2`
+  - Left child covers: `(l, mid)`
+  - Right child covers: `(mid + 1, r)`
 
+- Base condition:  
+  Recursion stops when `l == r`, meaning a single element is reached (leaf node).
 
-# CODE :
+- The **root** represents the whole array range.
+- The **height** of the tree is approximately `log₂(n)`.
+- The **total number of nodes** is approximately `2N - 1`.
 
-BuildTree()
-![alt text](<Screenshot 2025-06-26 194829.png>)
+---
 
+## ❓ Why Not Use Prefix Sum for Range Sum?
 
+**Prefix sum arrays** allow constant time range sum queries, but:
+
+- ❌ They do **not support updates efficiently** (O(n) time complexity).
+- ✅ Segment Trees allow both:
+  - Range queries in **O(log n)**
+  - Updates in **O(log n)**
+
+Hence, **Segment Trees > Prefix Sums** when updates are involved.
+
+---
+
+## 💻 Code: Build Segment Tree (Pseudocode / C++ style)
+
+![BuildTree Function](<Notes.image\Screenshot 2025-06-26 194829.png>)
+
+```cpp
+void BuildTree(int index, int left, int right) {
+    if (left == right) {
+        segment[index] = arr[right];  // or arr[left]
+        return;
+    }
+    int mid = (left + right) / 2;
+    BuildTree(2 * index + 1, left, mid);       // Build left child
+    BuildTree(2 * index + 2, mid + 1, right);  // Build right child
+    segment[index] = segment[2 * index + 1] + segment[2 * index + 2]; // Combine results
+}
