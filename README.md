@@ -66,7 +66,7 @@ Hence, **Segment Trees > Prefix Sums** when updates are involved.
 
 ## 💻 Code: Build Segment Tree (Pseudocode / C++ style)
 
-[alt text](<Notes.image\Screenshot 2025-06-26 194829.png>)
+![BuildTree Function](assets/buildtree.png)
 
 ```cpp
 void BuildTree(int index, int left, int right) {
