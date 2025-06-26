@@ -3,7 +3,7 @@ All about the segment tree
 
 
 
-Its is an efficient data structure that allows
+Its is an efficient data structure that allows </br>
  -> Efficient Querying of intervals/range.
  -> Efficient updating of intervals/range
 
