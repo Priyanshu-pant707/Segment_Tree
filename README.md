@@ -86,7 +86,7 @@ void BuildTree(int index, int left, int right) {
  
  - LEAF NODE : N
  - INTERNAL NODE : N-1
- -TOTAL SIZE=N+(N-1)
+ -TOTAL NODE=N+(N-1)
 
  ---
 
@@ -94,3 +94,46 @@ void BuildTree(int index, int left, int right) {
 - visiting all nodes twice 
 - building segment tree: O(N)
 
+
+
+
+```cpp
+void updateTREE(vector<int> &segmentTree, int index, int val, int i, int left, int right)
+{
+    // index is the index of rth
+    if (left == right)
+    {
+        segmentTree[i] = val;
+        return;
+    }
+    int mid = (left + right) / 2;
+
+    if (index <= mid)
+    {
+        updateTREE(segmentTree, index, val, 2 * i + 1, left, mid);
+    }
+    else
+    {
+        updateTREE(segmentTree, index, val, 2 * i + 2, mid + 1, right);
+    }
+    segmentTree[i] = segmentTree[2 * i + 1] + segmentTree[2 * i + 2];
+}
+
+
+
+
+```cpp
+int Query(vector<int> &segmentTree, int start, int end, int i, int left, int right)
+{
+
+    if (left > end || right < start)
+    {
+        return 0;
+    }
+    if (left >= start && right <= end)
+    {
+        return segmentTree[i];
+    }
+    int mid = (left + right) / 2;
+    return Query(segmentTree, start, end, 2 * i + 1, left, mid) + Query(segmentTree, start, end, 2 * i + 2, mid + 1, right);
+}

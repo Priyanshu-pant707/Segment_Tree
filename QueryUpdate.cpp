@@ -52,7 +52,7 @@ int main()
         cin >> arr[i];
     }
 
-    vector<int> segmentTree(4 * n, 0);
+    vector<int> segmentTree(n+(n-1), 0);
 
     cout << "Calling the build segment tree function ....." << endl;
     buildTree(arr, 0, 0, n - 1, segmentTree);

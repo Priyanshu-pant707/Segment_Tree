@@ -46,7 +46,7 @@ int main()
     cout << "Enter the Size of the Array :";
     cin >> n;
 
-    vector<int> segmentTree(4 * n, 0);
+    vector<int> segmentTree(n+(n-1), 0);
     vector<int> arr(n);
     cout << "enter the elements in the array :" << endl;
     for (int i = 0; i < n; i++)
