@@ -79,7 +79,7 @@ void BuildTree(int index, int left, int right) {
     BuildTree(2 * index + 2, mid + 1, right);  // Build right child
     segment[index] = segment[2 * index + 1] + segment[2 * index + 2]; // Combine results
 }
-
+```
 
 
 ## WHAT WILL BE THE SIZE OF SEGMENT ARRAY ❓❓
@@ -118,7 +118,7 @@ void updateTREE(vector<int> &segmentTree, int index, int val, int i, int left, i
     }
     segmentTree[i] = segmentTree[2 * i + 1] + segmentTree[2 * i + 2];
 }
-
+```
 
 
 
@@ -137,3 +137,4 @@ int Query(vector<int> &segmentTree, int start, int end, int i, int left, int rig
     int mid = (left + right) / 2;
     return Query(segmentTree, start, end, 2 * i + 1, left, mid) + Query(segmentTree, start, end, 2 * i + 2, mid + 1, right);
 }
+```
